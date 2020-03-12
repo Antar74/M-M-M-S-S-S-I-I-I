@@ -1,0 +1,41 @@
+#N canvas 762 163 504 574 12;
+#X obj 181 366 metro;
+#X msg 214 275 60000;
+#X obj 214 306 /, f 9;
+#X floatatom 274 226 5 0 0 0 - - -;
+#X obj 181 207 t b b b, f 10;
+#X msg 141 307 0;
+#X obj 141 112 r terminar;
+#X obj 181 139 r iniciar;
+#X obj 274 167 inlet;
+#X obj 181 405 outlet;
+#X text 335 365 actual ms;
+#X text 235 405 pulse;
+#X text 318 169 set BPM;
+#X text 155 34 >>> METRONOME ENGINE <<<;
+#X obj 284 366 outlet;
+#X obj 181 173 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 141 174 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 150 406 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 227 244 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 0 0 9 0;
+#X connect 0 0 17 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 1;
+#X connect 2 0 14 0;
+#X connect 3 0 2 1;
+#X connect 3 0 18 0;
+#X connect 4 0 0 0;
+#X connect 4 1 1 0;
+#X connect 4 2 3 0;
+#X connect 5 0 0 0;
+#X connect 6 0 16 0;
+#X connect 7 0 15 0;
+#X connect 8 0 3 0;
+#X connect 15 0 4 0;
+#X connect 16 0 5 0;
+#X connect 18 0 1 0;
