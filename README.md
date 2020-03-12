@@ -7,7 +7,7 @@ A metronome with a sequencer attached to it made with Pure Data Vanilla (0.50-0)
 
 **Metro Engine**: a simple metronome with the metro object. 
 
-**Step Meter**: takes a pulse and arranges it in a meter that can have up to 16 beats per measure. The measure can be shifted and shortened to achieve greater flexibility.
+**Step Meter**: takes a pulse and arranges it in a meter that can have up to 16 beats per measure. The measure can be shifted and shortened to achieve greater flexibility. Uses a counter object from MarkEx external library.
 
 **Beat Multiplets (bM)**: takes a beat and subdivides it to make tuplets. 
 
