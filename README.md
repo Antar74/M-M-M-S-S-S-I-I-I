@@ -1,7 +1,7 @@
 # Master-Metronome
 A metronome with a sequencer attached to it made with Pure Data Vanilla (0.50-0). It is a work in progress already capable of having up to 16 beats per measure, and subdivisions on each beat.
 
-**v 5-b2** uses 5 abstractions and 1 subpatch briefly described next: 
+**v 5-b6** uses 5 abstractions and 1 subpatch briefly described next: 
 
 **Transport Engine (subpatch)**: key controls for start and stop.
 
@@ -13,4 +13,4 @@ A metronome with a sequencer attached to it made with Pure Data Vanilla (0.50-0)
 
 **On**: on/off switch.
 
-**Midi Engine**: sets channel and midi note manually or with external controller.
+~~**Midi Engine**: sets channel and midi note manually or with external controller.~~
