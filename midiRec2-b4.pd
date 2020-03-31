@@ -1,0 +1,200 @@
+#N canvas 96 23 1184 719 12;
+#X text 529 26 >>> MIDI REC <<<;
+#N canvas 180 87 466 585 about 0;
+#X text 162 23 >>> MIDI REC <<<, f 17;
+#X text 49 530 MIDI REC by Perkinson 2020 (perklapoint@gmail.com),
+f 51;
+#X text 49 185 RECORDING:;
+#X text 49 303 PLAYING:;
+#X text 49 394 CHORDS:;
+#X text 49 205 MIDI Controller channel: 16 \; Insert silence attempts
+to register a silence by setting the MIDI note velocity to 0 \, but
+lacks a table to register it. This implies velocity is not being registered
+for any note (it is fixed at 100)., f 51;
+#X text 49 323 MIDI information is sent to either a PD patch or an
+external MIDI enabled application/phisical instrument connected to
+the computer., f 51;
+#X text 49 83 2 main sections \, one for recording and one for playing.
+A third section not fully operational is for playing chords. A GUI
+enables sending MIDI out \, channel \, displaying note number \, recording
+\, inserting silence \, and seting steps range., f 51;
+#X text 49 414 Experimental feature not fully developed needs a method
+to activate or deactivate this function. Now only major chords (will
+try minor chords also) are being derived from the registered note.
+Also \, a random delay is being applied to the registered note (will
+try all notes of the chord) for a less robotic expression., f 51;
+#X restore 25 25 pd about;
+#X obj 829 555 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 979 639 3 0 0 0 - - -;
+#X obj 828 396 stripnote;
+#X obj 549 676 noteout 10, f 13;
+#X floatatom 785 537 4 0 0 0 - - -;
+#X obj 979 570 markEx/counter, f 18;
+#X obj 867 83 loadbang;
+#X obj 785 470 on;
+#X obj 1084 657 ==;
+#X obj 737 676 sel 1;
+#X obj 737 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 275 500 on;
+#X obj 344 555 makenote 64 100;
+#X msg 652 451 0;
+#X obj 652 377 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 672 369 insert silence, f 8;
+#X obj 189 365 inlet;
+#X msg 867 124 16;
+#X text 232 365 step;
+#X obj 737 158 tgl 18 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 819 158 3 1 16 0 - - -;
+#X text 710 159 Rec;
+#X floatatom 867 158 3 1 16 0 - - -;
+#X text 847 159 eS;
+#X floatatom 681 158 3 0 0 0 - - -;
+#X text 668 159 #;
+#X msg 819 124 1;
+#X floatatom 637 158 3 0 0 0 - - -;
+#X text 617 159 ch;
+#X obj 254 613 loadbang;
+#X obj 275 331 inlet;
+#X text 316 331 pulse;
+#X msg 637 639 0;
+#X obj 637 618 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 785 638 tabwrite \$0-midiNotes;
+#X obj 1061 176 - 1;
+#X obj 828 368 notein 16;
+#X obj 772 158 bng 18 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 759 158 –;
+#X text 799 159 sS;
+#X text 670 632 note off, f 5;
+#X obj 318 384 tabread \$0-midiNotes;
+#X floatatom 318 427 3 0 0 0 - - -;
+#X floatatom 233 427 3 0 0 0 - - -;
+#X obj 25 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 1102 176 - 1;
+#X floatatom 1061 200 3 0 0 0 - - -;
+#X floatatom 1102 200 5 0 0 0 - - -;
+#X msg 979 368 clear;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-midiNotes 16 float 3;
+#A 0 60 64 67 65 64 62 60 72 71 69 67 65 67 69 71 71.7364;
+#X coords 0 127 16 0 371 239 1 0 0;
+#X restore 25 83 graph;
+#X obj 275 403 i;
+#X floatatom 275 427 3 0 0 0 - - -;
+#X msg 637 124 10;
+#X obj 344 676 s midiNotes;
+#X obj 344 583 pack f f, f 15;
+#X obj 549 641 unpack f f;
+#X obj 344 632 on;
+#X obj 549 602 on;
+#X obj 592 158 tgl 18 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 558 159 midi;
+#X floatatom 59 560 3 0 0 0 - - -;
+#X obj 59 601 + 4;
+#X obj 93 601 + 7;
+#X obj 25 674 noteout;
+#X obj 25 601 *;
+#X msg 25 526 1;
+#X obj 25 502 delay 1;
+#X obj 71 441 random 10;
+#X obj 71 465 * 10;
+#X text 503 647 send MIDI, f 5;
+#X text 299 647 send DSP, f 5;
+#X text 900 369 Rec note, f 5;
+#X text 1114 650 stop Rec, f 5;
+#X obj 318 458 loadbang;
+#X text 125 587 make major chords, f 6;
+#X text 83 498 add random delay to one note, f 11;
+#X text 900 123 set steps range, f 17;
+#X obj 191 530 on;
+#X obj 25 645 makenote 64 100;
+#X obj 533 158 tgl 18 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 492 159 chord;
+#X connect 2 0 7 0;
+#X connect 3 0 10 0;
+#X connect 4 0 9 0;
+#X connect 6 0 2 0;
+#X connect 6 0 14 0;
+#X connect 6 0 36 0;
+#X connect 6 0 26 0;
+#X connect 7 0 3 0;
+#X connect 7 0 36 1;
+#X connect 8 0 19 0;
+#X connect 8 0 28 0;
+#X connect 8 0 54 0;
+#X connect 9 0 6 0;
+#X connect 9 1 13 1;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 21 0;
+#X connect 13 0 14 0;
+#X connect 13 0 79 0;
+#X connect 14 0 26 0;
+#X connect 14 0 56 0;
+#X connect 14 1 56 1;
+#X connect 15 0 5 1;
+#X connect 15 0 9 0;
+#X connect 16 0 15 0;
+#X connect 18 0 43 0;
+#X connect 18 0 45 0;
+#X connect 19 0 24 0;
+#X connect 21 0 50 0;
+#X connect 21 0 9 1;
+#X connect 22 0 37 0;
+#X connect 24 0 47 0;
+#X connect 28 0 22 0;
+#X connect 29 0 5 2;
+#X connect 29 0 35 0;
+#X connect 31 0 58 1;
+#X connect 32 0 46 0;
+#X connect 32 0 52 0;
+#X connect 34 0 5 1;
+#X connect 35 0 34 0;
+#X connect 37 0 48 0;
+#X connect 38 0 4 0;
+#X connect 38 1 4 1;
+#X connect 39 0 16 0;
+#X connect 43 0 44 0;
+#X connect 43 0 52 1;
+#X connect 46 0 68 0;
+#X connect 46 0 69 0;
+#X connect 47 0 49 0;
+#X connect 48 0 7 2;
+#X connect 49 0 7 3;
+#X connect 49 0 10 1;
+#X connect 50 0 7 0;
+#X connect 52 0 53 0;
+#X connect 53 0 13 0;
+#X connect 54 0 29 0;
+#X connect 56 0 58 0;
+#X connect 56 0 59 0;
+#X connect 57 0 5 0;
+#X connect 57 1 5 1;
+#X connect 58 0 55 0;
+#X connect 59 0 57 0;
+#X connect 59 1 58 1;
+#X connect 60 0 59 1;
+#X connect 62 0 63 0;
+#X connect 62 0 64 0;
+#X connect 62 0 66 1;
+#X connect 63 0 80 0;
+#X connect 64 0 80 0;
+#X connect 66 0 80 0;
+#X connect 67 0 66 0;
+#X connect 68 0 67 0;
+#X connect 69 0 70 0;
+#X connect 70 0 68 1;
+#X connect 75 0 13 1;
+#X connect 79 0 62 0;
+#X connect 80 0 65 0;
+#X connect 80 1 65 1;
+#X connect 81 0 79 1;
+#X coords 0 -1 1 1 415 35 2 485 150;

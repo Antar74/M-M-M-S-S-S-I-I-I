@@ -1,0 +1,84 @@
+#N canvas 511 23 769 719 12;
+#X obj 154 331 metro;
+#X obj 154 363 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 101 312 0;
+#X obj 438 378 + 1;
+#X obj 394 427 + 1;
+#X msg 438 349 0, f 2;
+#X obj 394 378 i;
+#X obj 394 404 %;
+#X floatatom 530 386 2 0 0 0 - - -;
+#X floatatom 463 446 2 0 0 0 - - -;
+#X obj 512 464 ==;
+#X floatatom 549 483 2 0 0 0 - - -;
+#X obj 549 508 sel 1;
+#X obj 101 527 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 351 77 inlet;
+#X obj 530 77 inlet;
+#X obj 154 427 outlet;
+#X obj 154 107 inlet;
+#X text 206 426 new pulse;
+#X text 302 32 >>> BEAT MULTIPLETS <<<;
+#X text 197 107 pulse;
+#X text 598 509 stop;
+#X text 154 679 Beat Multiplets by Perkinson 2020 (perklapoint@gmail.com)
+;
+#X floatatom 530 126 2 1 8 0 - - -;
+#X text 506 126 bM;
+#X obj 275 209 /;
+#X obj 275 144 t b f;
+#X msg 275 179 1, f 2;
+#X floatatom 275 266 5 0 0 0 - - -;
+#X obj 351 144 t b f;
+#X obj 275 289 *;
+#X floatatom 275 313 5 0 0 0 - - -;
+#X text 394 78 actual MS;
+#X obj 438 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 572 77 # beats;
+#X text 155 562 About: takes in a metronome bang and divides it by
+1 \, 2 \, 3 \, 4 \, 5 \, 6 \, 7 \, or 8 to make tuplets (duplets \,
+triplets \, quadruplets \, quintuplets \, sextuplets \, septuplets
+and octuplets)., f 69;
+#X text 155 619 vb2 - subdivision method adapted from Cyprian at http://www.cyprian.com.au/blogg/index.php?post/2019/06/15/CREATING-A-METRONOME-IN-PD
+, f 69;
+#X obj 657 88 loadbang;
+#X msg 594 107 1;
+#X connect 0 0 1 0;
+#X connect 1 0 16 0;
+#X connect 1 0 6 0;
+#X connect 2 0 0 0;
+#X connect 3 0 6 1;
+#X connect 4 0 9 0;
+#X connect 5 0 6 1;
+#X connect 6 0 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 4 0;
+#X connect 8 0 10 1;
+#X connect 8 0 7 1;
+#X connect 8 0 26 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 2 0;
+#X connect 14 0 29 0;
+#X connect 15 0 23 0;
+#X connect 17 0 0 0;
+#X connect 23 0 33 0;
+#X connect 23 0 8 0;
+#X connect 25 0 28 0;
+#X connect 26 0 27 0;
+#X connect 26 1 25 1;
+#X connect 27 0 25 0;
+#X connect 28 0 30 0;
+#X connect 29 0 28 0;
+#X connect 29 1 30 1;
+#X connect 30 0 31 0;
+#X connect 31 0 0 1;
+#X connect 33 0 5 0;
+#X connect 37 0 38 0;
+#X connect 38 0 23 0;
+#X coords 0 -1 1 1 50 30 2 500 120;
