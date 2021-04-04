@@ -1,4 +1,4 @@
-# Master-Metronome
+# M&M&M, S&S&S, I&I&I
 A metronome with a sequencer attached to it made with Pure Data Vanilla (0.50-0). It is a work in progress already capable of having up to 16 beats per measure, and subdivisions on each beat.
 
 **v 5-b2** uses 5 abstractions and 1 subpatch briefly described next: 
